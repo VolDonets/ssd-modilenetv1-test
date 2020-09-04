@@ -6,7 +6,7 @@ import math
 import matplotlib.pyplot as plt
 
 # open and display image file
-img = Image.open("images/dog.jpg")
+img = Image.open("src/images/dog.jpg")
 plt.axis('off')
 plt.imshow(img)
 plt.show()
@@ -28,7 +28,7 @@ import onnxruntime as rt
 outputs = ["num_detections:0", "detection_boxes:0", "detection_scores:0", "detection_classes:0"]
 
 # load model and run inference
-sess = rt.InferenceSession("ssd_mobilenet_v1_10.onnx")
+sess = rt.InferenceSession("src/ssd_mobilenet_v1_10.onnx")
 result = sess.run(outputs, {"image_tensor:0": img_data})
 num_detections, detection_boxes, detection_scores, detection_classes = result
 
@@ -44,7 +44,7 @@ print(detection_classes)
 
 ### POSTPROCESSING
 
-coco_classes = [line.rstrip('\n') for line in open('coco_classes.txt')]
+coco_classes = [line.rstrip('\n') for line in open('src/coco_classes.txt')]
 
 # draw boundary boxes and label for each detection
 def draw_detection(draw, d, c):
