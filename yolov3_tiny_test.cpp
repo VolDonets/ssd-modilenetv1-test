@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     // Open file with classes names.
     if (1)
     {
-        std::string file = "/dev/video0";
+        std::string file = "src/coco_classes.txt";
         std::ifstream ifs(file.c_str());
         if (!ifs.is_open())
             CV_Error(Error::StsError, "File " + file + " not found");
@@ -65,7 +65,8 @@ int main(int argc, char** argv)
 
     // Open a video file or an image file or a camera stream.
     VideoCapture cap;
-    cap.open("1.mp4");
+    cap.open("/dev/video0");
+
 
     // Process frames.
     Mat frame, blob;
